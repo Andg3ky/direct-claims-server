@@ -13,7 +13,7 @@ public class ClaimsTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer policyNumber;
+    private String policyNumber;
     private String customer;
     private String status;
     private String type;
@@ -27,7 +27,7 @@ public class ClaimsTransaction {
     }
 
     //Constructor for setting everything
-    public ClaimsTransaction(Integer id, Integer policyNumber, String customer, String status, String type, String address, Integer estimatedValue, LocalDate dateOfClaim, String reason) {
+    public ClaimsTransaction(Integer id, String policyNumber, String customer, String status, String type, String address, Integer estimatedValue, LocalDate dateOfClaim, String reason) {
         this.id = id;
         this.policyNumber = policyNumber;
         this.customer = customer;
@@ -48,11 +48,11 @@ public class ClaimsTransaction {
         this.id = id;
     }
 
-    public Integer getPolicyNumber() {
+    public String getPolicyNumber() {
         return policyNumber;
     }
 
-    public void setPolicyNumber(Integer policyNumber) {
+    public void setPolicyNumber(String policyNumber) {
         this.policyNumber = policyNumber;
     }
 
