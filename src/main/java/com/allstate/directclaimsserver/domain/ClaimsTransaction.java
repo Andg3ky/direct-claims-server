@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class ClaimsTransaction {
@@ -111,4 +112,33 @@ public class ClaimsTransaction {
     public void setReason(String reason) {
         this.reason = reason;
     }
+
+    @Override
+    public String toString() {
+        return "ClaimsTransaction{" +
+                "id=" + id +
+                ", policyNumber=" + policyNumber +
+                ", customer='" + customer + '\'' +
+                ", status='" + status + '\'' +
+                ", type=" + type +
+                ", address='" + address + '\'' +
+                ", estimatedValue=" + estimatedValue +
+                ", dateOfClaim=" + dateOfClaim +
+                ", reason='" + reason + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClaimsTransaction that = (ClaimsTransaction) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
 }

@@ -24,4 +24,5 @@ public class ClaimsServiceImpl implements ClaimsService {
     public int countTransactions() {
         return claimsRespository.findAll().size();
     }
+
 }

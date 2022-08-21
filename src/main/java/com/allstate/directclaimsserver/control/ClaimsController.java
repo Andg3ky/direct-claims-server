@@ -3,10 +3,8 @@ package com.allstate.directclaimsserver.control;
 import com.allstate.directclaimsserver.domain.ClaimsTransaction;
 import com.allstate.directclaimsserver.service.ClaimsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,10 +18,10 @@ public class ClaimsController {
     @Autowired
     ClaimsService claimsService;
 
+    //Get all transaction data
     @GetMapping()
     public List<ClaimsTransaction> getAll() {
         return claimsService.getAllTransactions();
-
     }
 
     @GetMapping("/volume")
