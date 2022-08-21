@@ -24,6 +24,11 @@ public class ClaimsController {
         return claimsService.getAllTransactions();
     }
 
+    @GetMapping(value ="/{id}", produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ClaimsTransaction getById(@PathVariable("id") Integer id) {
+        return claimsService.getTransactionById(id);
+    }
+
     @GetMapping("/volume")
     public Map<String, String> getNumberofClaims() {
         Integer volume = claimsService.countTransactions();
@@ -31,4 +36,5 @@ public class ClaimsController {
         results.put("volume", volume.toString());
         return results;
     }
+
 }

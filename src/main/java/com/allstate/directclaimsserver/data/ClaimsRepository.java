@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ClaimsRepository extends JpaRepository<ClaimsTransaction, Integer> {
 
+
 }

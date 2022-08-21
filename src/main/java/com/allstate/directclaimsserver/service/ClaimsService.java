@@ -8,5 +8,6 @@ public interface ClaimsService {
 
     public List<ClaimsTransaction> getAllTransactions();
     public int countTransactions();
+    public ClaimsTransaction getTransactionById(Integer id);
 
 }
