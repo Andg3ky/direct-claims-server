@@ -28,11 +28,20 @@ public class ClaimsServiceImpl implements ClaimsService {
         return claimsRespository.findAll();
     }
 
+    //@Override
+    //public ClaimsTransaction getTransactionById(Integer id) {
+    //    return (ClaimsTransaction) claimsRespository.findAllById(Collections.singleton(id));
+    //}
+
     @Override
     public ClaimsTransaction getTransactionById(Integer id) {
-        return (ClaimsTransaction) claimsRespository.findAllById(Collections.singleton(id));
+        Optional<ClaimsTransaction> optionalCT =  claimsRespository.findById(id);
+        if (optionalCT.isPresent()) {
+            return optionalCT.get();
+        }
+        logger.info("There is no transaction with an ID of " + id);
+        throw new TransactionNotFoundException("There is no transaction with an ID of " + id);
     }
-
 
     @Override
     public int countTransactions() {

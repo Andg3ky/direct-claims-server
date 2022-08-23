@@ -113,32 +113,6 @@ public class ClaimsTransaction {
         this.reason = reason;
     }
 
-    @Override
-    public String toString() {
-        return "ClaimsTransaction{" +
-                "id=" + id +
-                ", policyNumber=" + policyNumber +
-                ", customer='" + customer + '\'' +
-                ", status='" + status + '\'' +
-                ", type=" + type +
-                ", address='" + address + '\'' +
-                ", estimatedValue=" + estimatedValue +
-                ", dateOfClaim=" + dateOfClaim +
-                ", reason='" + reason + '\'' +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ClaimsTransaction that = (ClaimsTransaction) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
 }
