@@ -1,6 +1,7 @@
 package com.allstate.directclaimsserver.control;
 
 import com.allstate.directclaimsserver.domain.ClaimsTransaction;
+import com.allstate.directclaimsserver.dtos.ClaimsTransactionDTO;
 import com.allstate.directclaimsserver.service.ClaimsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -35,6 +36,18 @@ public class ClaimsController {
         Map<String, String> results = new HashMap<>();
         results.put("volume", volume.toString());
         return results;
+    }
+
+    @PutMapping("/{id}")
+    public ClaimsTransaction updateTransaction(@PathVariable("id") Integer id,
+                                                   @RequestBody Map<String, String> data) {
+
+        return claimsService.updateTransaction(id, data);
+    }
+
+    @PostMapping
+    public ClaimsTransaction addTransaction(@RequestBody ClaimsTransactionDTO newTransaction) {
+        return claimsService.add(newTransaction);
     }
 
 }

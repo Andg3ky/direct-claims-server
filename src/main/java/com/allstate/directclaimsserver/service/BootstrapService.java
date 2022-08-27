@@ -4,7 +4,6 @@ import com.allstate.directclaimsserver.data.ClaimsRepository;
 import com.allstate.directclaimsserver.domain.ClaimsTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
