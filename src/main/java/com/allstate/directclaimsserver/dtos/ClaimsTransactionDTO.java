@@ -6,20 +6,20 @@ import java.time.LocalDate;
 
 public class ClaimsTransactionDTO {
 
-    //NEW CLAIM FIELDS
-    private String id;
-    private String type;
+    private Integer id;
+
     private String policyNumber;
     private String customer;
-    private LocalDate dateOfClaim;
+    private String status;
+    private String type;
+    private String address;
     private Integer estimatedValue;
+    private LocalDate dateOfClaim;
     private String reason;
     private String incidentDescription;
 
-    private String status;
-
     //PROPERTY INSURANCE SPECIFIC
-    private String address;
+    private String addressImpacted;
 
     //MOTOR INSURANCE SPECIFIC
     private String motorMake;
@@ -35,36 +35,63 @@ public class ClaimsTransactionDTO {
     }
 
     //Constructor for setting everything
-    public ClaimsTransactionDTO(String id, String type, String policyNumber, String customer, LocalDate dateOfClaim, Integer estimatedValue, String reason, String incidentDescription, String status, String address, String motorMake, String motorModel, Integer motorYear, String petType, String petBreed) {
-        this.id = id;
-        this.type = type;
-        this.policyNumber = policyNumber;
-        this.customer = customer;
-        this.dateOfClaim = dateOfClaim;
-        this.estimatedValue = estimatedValue;
-        this.reason = reason;
-        this.incidentDescription = incidentDescription;
-        this.status = status;
-        this.address = address;
-        this.motorMake = motorMake;
-        this.motorModel = motorModel;
-        this.motorYear = motorYear;
-        this.petType = petType;
-        this.petBreed = petBreed;
+    public ClaimsTransactionDTO(ClaimsTransaction ct) {
+        this.id = ct.getId();
+        this.type = ct.getType();
+        this.policyNumber = ct.getPolicyNumber();
+        this.customer = ct.getCustomer();
+        this.dateOfClaim = ct.getDateOfClaim();
+        this.estimatedValue = ct.getEstimatedValue();
+        this.reason = ct.getReason();
+        this.incidentDescription = ct.getIncidentDescription();
+        this.addressImpacted = ct.getAddressImpacted();
+        this.status = ct.getStatus();
+        this.address = ct.getAddress();
+        this.motorMake = ct.getMotorMake();
+        this.motorModel = ct.getMotorModel();
+        this.motorYear = ct.getMotorYear();
+        this.petType = ct.getPetType();
+        this.petBreed = ct.getPetBreed();
     }
 
     //Set in ClaimsServiceImpl
     public ClaimsTransaction toClaimsTransaction() {
-        ClaimsTransaction ct = new ClaimsTransaction(null, policyNumber,customer,status, type, address,estimatedValue,LocalDate.now(),reason);
+        ClaimsTransaction ct = new ClaimsTransaction(null, policyNumber,customer, status , type, address,
+                estimatedValue, LocalDate.now(),reason, incidentDescription, addressImpacted, motorMake, motorModel, motorYear, petType, petBreed);
+        if (status.toLowerCase().equals("property")) {
+            ct.setMotorModel("n/a");
+            ct.setMotorMake("n/a");
+            ct.setMotorYear(0);
+            ct.setPetType("n/a");
+            ct.setPetBreed("n/a");
+        }
+        if (status.toLowerCase().equals("motor")) {
+            ct.setAddressImpacted("n/a");
+            ct.setPetType("n/a");
+            ct.setPetBreed("n/a");
+        }
+        if (status.toLowerCase().equals("pet")) {
+            ct.setAddressImpacted("n/a");
+            ct.setMotorModel("n/a");
+            ct.setMotorMake("n/a");
+            ct.setMotorYear(0);
+        }
+        if (estimatedValue > 499) {
+            ct.setStatus("Transferred to main claims");
+        }
+        if (estimatedValue < 500) {
+            ct.setStatus("Awaiting Assessment");
+        }
+
         return ct;
     }
 
     //Getters and Setters
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
