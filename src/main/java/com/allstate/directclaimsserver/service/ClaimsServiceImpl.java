@@ -58,16 +58,21 @@ public class ClaimsServiceImpl implements ClaimsService {
         if (data.containsKey("estimatedValue")) transaction.setEstimatedValue(Integer.parseInt(data.get("estimatedValue")));
         if (data.containsKey("dateOfClaim")) transaction.setDateOfClaim(LocalDate.parse(data.get("dateOfClaim")));
         if (data.containsKey("reason")) transaction.setReason(data.get("reason"));
+        if (data.containsKey("incidentDescription")) transaction.setReason(data.get("incidentDescription"));
+        if (data.containsKey("addressImpacted")) transaction.setReason(data.get("addressImpacted"));
+        if (data.containsKey("motorMake")) transaction.setReason(data.get("motorMake"));
+        if (data.containsKey("motorModel")) transaction.setReason(data.get("motorModel"));
+        if (data.containsKey("motorYear")) transaction.setReason(data.get("motorYear"));
+        if (data.containsKey("petType")) transaction.setReason(data.get("petType"));
+        if (data.containsKey("petBreed")) transaction.setReason(data.get("petBreed"));
+
         return claimsRespository.save(transaction);
     }
 
     @Override
     public ClaimsTransaction add(ClaimsTransactionDTO transactionDTO) {
         ClaimsTransaction transaction = transactionDTO.toClaimsTransaction();
-
-        if(transaction.getId() == null) {
-            throw new InvalidNewTransactionException("Claims Id must be provided");
-        }
+        
         try {
             return claimsRespository.save(transaction);
         }

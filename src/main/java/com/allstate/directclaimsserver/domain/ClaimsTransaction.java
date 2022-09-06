@@ -18,7 +18,6 @@ public class ClaimsTransaction {
     private String customer;
     private String status;
     private String type;
-    //PROPERTY INSURANCE SPECIFIC
     private String address;
     private Integer estimatedValue;
     private LocalDate dateOfClaim;
@@ -190,4 +189,42 @@ public class ClaimsTransaction {
     public void setPetBreed(String petBreed) {
         this.petBreed = petBreed;
     }
+
+    @Override
+    public String toString() {
+        return "ClaimsTransaction{" +
+                "id=" + id +
+                ", policyNumber=" + policyNumber +
+                ", customer=" + customer + '\'' +
+                ", status=" + status + '\'' +
+                ", type=" + type +
+                ", address='" + address + '\'' +
+                ", estimatedValue=" + estimatedValue +
+                ", dateOfClaim=" + dateOfClaim +
+                ", reason='" + reason + '\'' +
+                ", incidentDescription=" + incidentDescription +
+                ", addressImpacted=" + addressImpacted +
+                ", motorMake=" + motorMake +
+                ", motorModel=" + motorModel +
+                ", motorYear=" + motorYear +
+                ", petType=" + petType +
+                ", petBreed=" + petBreed +
+
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClaimsTransaction that = (ClaimsTransaction) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+
 }

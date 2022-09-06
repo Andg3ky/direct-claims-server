@@ -58,19 +58,19 @@ public class ClaimsTransactionDTO {
     public ClaimsTransaction toClaimsTransaction() {
         ClaimsTransaction ct = new ClaimsTransaction(null, policyNumber,customer, status , type, address,
                 estimatedValue, LocalDate.now(),reason, incidentDescription, addressImpacted, motorMake, motorModel, motorYear, petType, petBreed);
-        if (status.toLowerCase().equals("property")) {
+        if (type.toLowerCase().equals("property")) {
             ct.setMotorModel("n/a");
             ct.setMotorMake("n/a");
             ct.setMotorYear(0);
             ct.setPetType("n/a");
             ct.setPetBreed("n/a");
         }
-        if (status.toLowerCase().equals("motor")) {
+        if (type.toLowerCase().equals("motor")) {
             ct.setAddressImpacted("n/a");
             ct.setPetType("n/a");
             ct.setPetBreed("n/a");
         }
-        if (status.toLowerCase().equals("pet")) {
+        if (type.toLowerCase().equals("pet")) {
             ct.setAddressImpacted("n/a");
             ct.setMotorModel("n/a");
             ct.setMotorMake("n/a");

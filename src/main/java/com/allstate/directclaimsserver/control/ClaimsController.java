@@ -40,7 +40,7 @@ public class ClaimsController {
 
     @PutMapping("/{id}")
     public ClaimsTransaction updateTransaction(@PathVariable("id") Integer id,
-                                                   @RequestBody Map<String, String> data) {
+                                               @RequestBody Map<String, String> data) {
 
         return claimsService.updateTransaction(id, data);
     }
