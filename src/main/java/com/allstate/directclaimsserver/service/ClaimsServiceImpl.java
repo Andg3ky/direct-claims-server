@@ -72,7 +72,7 @@ public class ClaimsServiceImpl implements ClaimsService {
     @Override
     public ClaimsTransaction add(ClaimsTransactionDTO transactionDTO) {
         ClaimsTransaction transaction = transactionDTO.toClaimsTransaction();
-        
+
         try {
             return claimsRespository.save(transaction);
         }

@@ -59,21 +59,21 @@ public class ClaimsTransactionDTO {
         ClaimsTransaction ct = new ClaimsTransaction(null, policyNumber,customer, status , type, address,
                 estimatedValue, LocalDate.now(),reason, incidentDescription, addressImpacted, motorMake, motorModel, motorYear, petType, petBreed);
         if (type.toLowerCase().equals("property")) {
-            ct.setMotorModel("n/a");
-            ct.setMotorMake("n/a");
+            ct.setMotorModel("Not Applicable");
+            ct.setMotorMake("Not Applicable");
             ct.setMotorYear(0);
-            ct.setPetType("n/a");
-            ct.setPetBreed("n/a");
+            ct.setPetType("Not Applicable");
+            ct.setPetBreed("Not Applicable");
         }
         if (type.toLowerCase().equals("motor")) {
-            ct.setAddressImpacted("n/a");
-            ct.setPetType("n/a");
-            ct.setPetBreed("n/a");
+            ct.setAddressImpacted("Not Applicable");
+            ct.setPetType("Not Applicable");
+            ct.setPetBreed("Not Applicable");
         }
         if (type.toLowerCase().equals("pet")) {
-            ct.setAddressImpacted("n/a");
-            ct.setMotorModel("n/a");
-            ct.setMotorMake("n/a");
+            ct.setAddressImpacted("Not Applicable");
+            ct.setMotorModel("Not Applicable");
+            ct.setMotorMake("Not Applicable");
             ct.setMotorYear(0);
         }
         if (estimatedValue > 499) {
