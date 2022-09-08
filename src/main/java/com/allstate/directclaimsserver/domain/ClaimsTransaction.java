@@ -201,7 +201,7 @@ public class ClaimsTransaction {
                 ", address='" + address + '\'' +
                 ", estimatedValue=" + estimatedValue +
                 ", dateOfClaim=" + dateOfClaim +
-                ", reason='" + reason + '\'' +
+                ", reason=" + reason +
                 ", incidentDescription=" + incidentDescription +
                 ", addressImpacted=" + addressImpacted +
                 ", motorMake=" + motorMake +

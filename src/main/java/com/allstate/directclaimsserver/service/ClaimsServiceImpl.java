@@ -58,13 +58,13 @@ public class ClaimsServiceImpl implements ClaimsService {
         if (data.containsKey("estimatedValue")) transaction.setEstimatedValue(Integer.parseInt(data.get("estimatedValue")));
         if (data.containsKey("dateOfClaim")) transaction.setDateOfClaim(LocalDate.parse(data.get("dateOfClaim")));
         if (data.containsKey("reason")) transaction.setReason(data.get("reason"));
-        if (data.containsKey("incidentDescription")) transaction.setReason(data.get("incidentDescription"));
-        if (data.containsKey("addressImpacted")) transaction.setReason(data.get("addressImpacted"));
-        if (data.containsKey("motorMake")) transaction.setReason(data.get("motorMake"));
-        if (data.containsKey("motorModel")) transaction.setReason(data.get("motorModel"));
-        if (data.containsKey("motorYear")) transaction.setReason(data.get("motorYear"));
-        if (data.containsKey("petType")) transaction.setReason(data.get("petType"));
-        if (data.containsKey("petBreed")) transaction.setReason(data.get("petBreed"));
+        if (data.containsKey("incidentDescription")) transaction.setIncidentDescription(data.get("incidentDescription"));
+        if (data.containsKey("addressImpacted")) transaction.setAddressImpacted(data.get("addressImpacted"));
+        if (data.containsKey("motorMake")) transaction.setMotorMake(data.get("motorMake"));
+        if (data.containsKey("motorModel")) transaction.setMotorModel(data.get("motorModel"));
+        if (data.containsKey("motorYear")) transaction.setMotorYear(Integer.parseInt(data.get("motorYear")));
+        if (data.containsKey("petType")) transaction.setPetType(data.get("petType"));
+        if (data.containsKey("petBreed")) transaction.setPetBreed(data.get("petBreed"));
 
         return claimsRespository.save(transaction);
     }
