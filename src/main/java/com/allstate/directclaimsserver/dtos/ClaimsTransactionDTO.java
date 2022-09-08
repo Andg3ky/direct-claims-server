@@ -167,6 +167,14 @@ public class ClaimsTransactionDTO {
         this.address = address;
     }
 
+    public String getAddressImpacted() {
+        return addressImpacted;
+    }
+
+    public void setAddressImpacted(String addressImpacted) {
+        this.addressImpacted = addressImpacted;
+    }
+
     public String getMotorMake() {
         return motorMake;
     }
